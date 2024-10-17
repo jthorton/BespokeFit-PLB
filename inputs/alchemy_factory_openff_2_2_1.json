@@ -1,0 +1,190 @@
+{
+  "type": "FreeEnergyCalculationFactory",
+  "solvent_settings": {
+    "type": "SolventSettings",
+    "smiles": "O",
+    "positive_ion": "Na+",
+    "negative_ion": "Cl-",
+    "neutralize": true,
+    "ion_concentration": {
+      "magnitude": 0.15,
+      "unit": "molar",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    }
+  },
+  "forcefield_settings": {
+    "constraints": "hbonds",
+    "rigid_water": true,
+    "hydrogen_mass": 3.0,
+    "forcefields": [
+      "amber/ff14SB.xml",
+      "amber/tip3p_standard.xml",
+      "amber/tip3p_HFE_multivalent.xml",
+      "amber/phosaa10.xml"
+    ],
+    "small_molecule_forcefield": "openff-2.2.1.offxml",
+    "nonbonded_cutoff": {
+      "magnitude": 0.9,
+      "unit": "nanometer",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "nonbonded_method": "PME"
+  },
+  "thermo_settings": {
+    "temperature": {
+      "magnitude": 298.15,
+      "unit": "kelvin",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "pressure": {
+      "magnitude": 0.9869232667160129,
+      "unit": "standard_atmosphere",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "ph": null,
+    "redox_potential": null
+  },
+  "solvation_settings": {
+    "solvent_model": "tip3p",
+    "solvent_padding": {
+      "magnitude": 1.5,
+      "unit": "nanometer",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "box_shape": "dodecahedron",
+    "number_of_solvent_molecules": null,
+    "box_vectors": null,
+    "box_size": null
+  },
+  "alchemical_settings": {
+    "softcore_LJ": "gapsys",
+    "explicit_charge_correction_cutoff": {
+      "magnitude": 0.8,
+      "unit": "nanometer",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "endstate_dispersion_correction": false,
+    "use_dispersion_correction": false,
+    "softcore_alpha": 0.85,
+    "turn_off_core_unique_exceptions": false,
+    "explicit_charge_correction": false
+  },
+  "engine_settings": {
+    "compute_platform": null
+  },
+  "integrator_settings": {
+    "timestep": {
+      "magnitude": 4,
+      "unit": "femtosecond",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "langevin_collision_rate": {
+      "magnitude": 1.0,
+      "unit": "1 / picosecond",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "barostat_frequency": {
+      "magnitude": 25,
+      "unit": "timestep",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "remove_com": false,
+    "reassign_velocities": false,
+    "n_restart_attempts": 20,
+    "constraint_tolerance": 1e-06
+  },
+  "simulation_settings": {
+    "equilibration_length": {
+      "magnitude": 1.0,
+      "unit": "nanosecond",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "production_length": {
+      "magnitude": 5.0,
+      "unit": "nanosecond",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "minimization_steps": 5000,
+    "time_per_iteration": {
+      "magnitude": 1,
+      "unit": "picosecond",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "real_time_analysis_interval": {
+      "magnitude": 250,
+      "unit": "picosecond",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "early_termination_target_error": {
+      "magnitude": 0.0,
+      "unit": "kilocalorie_per_mole",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "real_time_analysis_minimum_time": {
+      "magnitude": 500,
+      "unit": "picosecond",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "sampler_method": "repex",
+    "sams_flatness_criteria": "logZ-flatness",
+    "sams_gamma0": 1.0,
+    "n_replicas": 11
+  },
+  "protocol": "RelativeHybridTopologyProtocol",
+  "protocol_repeats": 1,
+  "lambda_settings": {
+    "lambda_functions": "default",
+    "lambda_windows": 11
+  },
+  "partial_charge_settings": {
+    "partial_charge_method": "am1bcc",
+    "off_toolkit_backend": "ambertools",
+    "number_of_conformers": null,
+    "nagl_model": null
+  },
+  "output_settings": {
+    "checkpoint_interval": {
+      "magnitude": 250,
+      "unit": "picosecond",
+      ":is_custom:": true,
+      "pint_unit_registry": "openff_units"
+    },
+    "forcefield_cache": "db.json",
+    "output_indices": "not water",
+    "checkpoint_storage_filename": "checkpoint.chk",
+    "output_filename": "simulation.nc",
+    "output_structure": "hybrid_system.pdb"
+  },
+  "network_planner": {
+    "type": "NetworkPlanner",
+    "atom_mapping_engine": {
+      "type": "LomapAtomMapper",
+      "timeout": 20,
+      "threed": true,
+      "max3d": 1000.0,
+      "element_change": true,
+      "seed": "",
+      "shift": true
+    },
+    "scorer": "default_lomap",
+    "network_planning_method": {
+      "type": "MinimalRedundantPlanner",
+      "redundancy": 2
+    }
+  }
+}
