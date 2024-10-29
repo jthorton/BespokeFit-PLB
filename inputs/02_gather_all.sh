@@ -1,7 +1,7 @@
 # simply loop through all production folders while submitting with proper project names.
 # do the bespokefit ones first.
 topdir=$(pwd)
-for i in {2..5}; do
+for i in {1..5}; do
     echo "REPLICATE $i"
     cd ./bespokefit_benchmarks_$i
     echo "Gathering Bespoke.."
